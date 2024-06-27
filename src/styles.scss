@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'material-design-icons/iconfont/material-icons.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+
+}
+
+body {
+    // font-family: "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+}
+
+h1, h2 {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    // font-weight: 800;
+    font-style: normal;
+}
+
+:root {
+    // --header-font-family: "M PLUS Rounded 1c", sans-serif;
+    --header-font-family: "Quicksand", sans-serif;
+    --header-font-style: normal;
+    --primary-color: #030303;
+
+    --background-color-header: #2EC4B6;
+    --background-color-body: #FFFFFF;
+    --background-color-greeting: #CBF3F0;
+    --background-color-button: #FFBF69;
+    --background-color-button-hover: #e3a95d;
+    --body-bold-color: #183c39;
+    --body-a-color: #154f4a;
+}
+
+a,
+button {
+    cursor: pointer;
+}

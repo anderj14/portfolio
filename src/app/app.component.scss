@@ -1,0 +1,14 @@
+main {
+    background-color: var(--background-color-body);
+    // background-color: #F5F5DC;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.cv {
+    max-width: 600px;
+    margin: 20px;
+}
