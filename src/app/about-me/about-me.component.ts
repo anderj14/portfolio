@@ -27,7 +27,7 @@ import { RouterModule } from '@angular/router';
               such as RUP and SCRUM. I seamlessly integrate the essential steps of systems analysis and 
               design, navigating from meticulous requirements gathering to strategic system planning and 
               thoughtful design. Beyond lines of code, I find joy in capturing moments through photography. 
-              Today, I channel my expertise into my own products, leaving a distinctive mark on the dynamic 
+              Today, I channel my expertise into my own projects, leaving a distinctive mark on the dynamic 
               landscape of software development.
             </p>
             <button [routerLink]="['/works']">My portfolio</button>

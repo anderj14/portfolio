@@ -11,34 +11,34 @@ import { InventItemComponent } from './invent-item/invent-item.component';
   standalone: true,
   imports: [CommonModule, RouterModule, WorkItemComponent, InventItemComponent],
   template: `
-  <section class="cards">
-    <div class="results">
-      <h2>Works</h2>
-      <div class="items">
-      @for (work of workList; track work) {
-        <app-work-item
-          [workList]="work"
-        ></app-work-item>
-      }@empty {
-        Empty list of works
-      }
-      </div>
-      </div>
-  </section>
-  <section class="cards">
-    <div class="results">
-      <h2>Invents</h2>
-      <div class="items">
-        @for (invent of inventList; track invent) {
-          <app-invent-item
-          [invents]="invent"
-          ></app-invent-item>
+    <section class="cards">
+      <div class="results">
+        <h2>Works</h2>
+        <div class="items">
+        @for (work of workList; track work) {
+          <app-work-item
+            [workList]="work"
+          ></app-work-item>
         }@empty {
-          Empty list of invents
+          Empty list of works
         }
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="cards">
+      <div class="results">
+        <h2>Invents</h2>
+        <div class="items">
+          @for (invent of inventList; track invent) {
+            <app-invent-item
+            [invents]="invent"
+            ></app-invent-item>
+          }@empty {
+            Empty list of invents
+          }
+        </div>
+      </div>
+    </section>
   `,
   styles: `
     .cards {

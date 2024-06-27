@@ -24,7 +24,7 @@ export class WorksService {
     },
     {
       id: 2,
-      workName: "DentalClinic",
+      workName: "DentalClinic - Old Work",
       shortDescription: "This dental application manages various aspects of a clinic, including costs and payments, data management.",
       about: "This dental application manages various aspects of a clinic, including costs and payments, data management in SQL Server, connection to MySQL, patient monitoring, and disease management, diagnostics, soft tissue testing and imaging, offering a comprehensive and efficient solution.",
       githubRepository: "https://github.com/anderj14/DentalClinicManagement",
@@ -60,19 +60,6 @@ export class WorksService {
   protected inventList: IInventsList[] = [
     {
       id: 1,
-      inventName: "N.T.",
-      shortDescription: "Allows users to save their notes in a personalized way.",
-      about: "An api developed in .net that allows users to save their notes in a personalized way, in addition to being able to modify, update and delete them.",
-      platform: ".NET",
-      stack: "C#/.NET",
-      githubRepository: "https://github.com/anderj14/NoteService",
-      pictures: [
-        { id: 1, imageUrl: "/assets/invents/mrdoc_1.png", imageName: "Imagen 1" },
-        { id: 2, imageUrl: "/assets/invents/mrdoc_1.png", imageName: "Imagen 2" },
-      ],
-    },
-    {
-      id: 2,
       inventName: "GameRoom",
       shortDescription: "Web application that offers a detailed catalog of video game consoles.",
       about: "Web application that offers a detailed catalog of video game consoles. Users can access complete technical information for each console. In addition, the application includes a catalog of games compatible with these consoles, also providing detailed technical information about each game.",
@@ -80,14 +67,14 @@ export class WorksService {
       platform: "Web",
       stack: ".NET/Sqlite/Angular",
       pictures: [
-        { id: 3, imageUrl: "/assets/invents/game/game-1.png", imageName: "Imagen 3" },
-        { id: 4, imageUrl: "/assets/invents/game/game-2.png", imageName: "Imagen 4" },
-        { id: 5, imageUrl: "/assets/invents/game/game-3.png", imageName: "Imagen 5" },
-        { id: 6, imageUrl: "/assets/invents/game/game-4.png", imageName: "Imagen 6" },
+        { id: 1, imageUrl: "/assets/invents/game/game-1.png", imageName: "Imagen 3" },
+        { id: 2, imageUrl: "/assets/invents/game/game-2.png", imageName: "Imagen 4" },
+        { id: 3, imageUrl: "/assets/invents/game/game-3.png", imageName: "Imagen 5" },
+        { id: 4, imageUrl: "/assets/invents/game/game-4.png", imageName: "Imagen 6" },
       ],
     },
     {
-      id: 3,
+      id: 2,
       inventName: "Encyclopedia",
       shortDescription: "A web application that works as an online encyclopedia.",
       about: "A web application that works as an online encyclopedia, using the Wikipedia API. Users can search terms and words to get detailed information directly from Wikipedia",
