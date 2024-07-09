@@ -78,7 +78,7 @@ export class WorksService {
       inventName: "Encyclopedia",
       shortDescription: "A web application that works as an online encyclopedia.",
       about: "A web application that works as an online encyclopedia, using the Wikipedia API. Users can search terms and words to get detailed information directly from Wikipedia",
-      platform: "Plataforma C",
+      platform: "Web",
       stack: "Angular",
       githubRepository: "https://github.com/anderj14/Encyclopedia",
       pictures: [
