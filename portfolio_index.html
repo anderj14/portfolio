@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anderson Frias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f7f4;
+      --text: #1a1a1a;
+      --muted: #666;
+      --subtle: #999;
+      --link: #1a4a8a;
+      --link-hover: #c0392b;
+      --border: #e0ddd8;
+      --accent: #1a4a8a;
+      --tag-bg: #eef2f8;
+      --tag-text: #1a4a8a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141414;
+        --text: #e8e6e1;
+        --muted: #999;
+        --subtle: #666;
+        --link: #7aabf0;
+        --link-hover: #f07a7a;
+        --border: #2a2a2a;
+        --accent: #7aabf0;
+        --tag-bg: #1e2a3a;
+        --tag-text: #7aabf0;
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 17px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    header {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .name {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    .tagline {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    .header-links a {
+      color: var(--link);
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    .header-links a:hover {
+      color: var(--link-hover);
+      opacity: 1;
+    }
+
+    nav {
+      margin-bottom: 3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--subtle);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: color-mix(in srgb, var(--link) 30%, transparent);
+      transition: color 0.15s, text-decoration-color 0.15s;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration-color: var(--link-hover);
+    }
+
+    .project-list {
+      list-style: none;
+    }
+
+    .project-list li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1rem;
+      align-items: start;
+    }
+
+    .project-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      display: block;
+      line-height: 1.55;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-self: start;
+      padding-top: 0.2rem;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .yt-block {
+      padding: 1.2rem 1.4rem;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      margin-top: 1rem;
+    }
+
+    .yt-block .yt-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .yt-block .yt-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--subtle);
+      margin-bottom: 0.6rem;
+    }
+
+    .writing-note {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .exp-entry {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-entry:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--subtle);
+    }
+
+    .exp-company {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-description {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-stack {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-line {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      margin-top: 5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--subtle);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .name {
+        font-size: 2rem;
+      }
+
+      body {
+        padding: 2.5rem 1.2rem 4rem;
+      }
+
+      .project-list li {
+        grid-template-columns: 1fr;
+      }
+
+      .project-tags {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="name">Anderson Frias</div>
+    <div class="tagline">Software engineer. I build things that work, then sell them — sometimes both at once.</div>
+    <div class="header-links">
+      <a href="https://github.com/anderj14" target="_blank">github.com/anderj14</a>
+      <a href="https://www.youtube.com/@anndev14" target="_blank">youtube/@anndev14</a>
+      <a href="https://www.linkedin.com/in/anderson-frias-478214225/" target="_blank">linkedin</a>
+      <a href="Anderson_Frias_RESUME.pdf" target="_blank">résumé.pdf</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">about</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#youtube">youtube</a>
+    <a href="#writing">writing</a>
+    <a href="#contact">contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>Who I am</h2>
+    <p>
+      I'm a full-stack software engineer from Santiago, Dominican Republic.
+      I graduated <em>cum laude</em> in Computer Science from UASD and have spent the last few years
+      building web platforms, desktop tools, SaaS products, and the occasional ESP32-powered GPS tracker
+      for a meat distributor in New Jersey — you know, the usual.
+    </p>
+    <p>
+      My main stack is <strong>.NET + Angular</strong>, but I'm equally comfortable on the frontend with React,
+      or deep inside a Linux server at 11pm wondering why MySQL decided today was the day to have opinions.
+      I've shipped products to real customers, sold two of them, and I'm building more.
+    </p>
+    <p>
+      I started programming at 16 with C# — which, as it turns out, is also what pays my bills today.
+      Not the most surprising plot twist. Back then it was mostly making games during high school,
+      in between playing Halo 1 (a masterpiece, not up for debate) and occasionally picking up the guitar.
+      The games are gone — lost on a broken mini-laptop somewhere in the past — but the language stuck.
+    </p>
+    <p>
+      What pulled me toward Computer Science was watching my cousin write assembly and C++ for electronics.
+      He'd explain what he was doing and somehow it just <em>made sense</em> to me.
+      I thought: that looks cool, I want to do that. No grand plan. Just curiosity and a cousin who codes.
+      Sometimes that's enough.
+    </p>
+    <p>
+      My father is a doctor and, naturally, had a different career in mind for me.
+      I ended up in software anyway — had to build my own path and my own contacts,
+      but here we are. No regrets.
+      There's also a version of this story where I became a baseball player:
+      a manager wanted me on his team, my parents said no, and that door closed quietly.
+      So between medicine and baseball, I somehow ended up talking to computers for a living.
+      I think everyone involved is at peace with it now.
+    </p>
+    <p>
+      And yes, before you ask — I know this site doesn't have a fancy animated portfolio with
+      parallax scrolling and a hero section. That's intentional.
+      I'm not here to impress you with 20 libraries loading just to say hello.
+      I'm a realist: if the content is solid, it doesn't need fireworks.
+      Plain HTML and a little CSS have been getting the job done since before most JS frameworks existed.
+      Some things don't need to be reinvented.
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <span class="exp-role">Full-Stack Software Engineer</span>
+        <span class="exp-date">Nov 2025 – Present</span>
+      </div>
+      <div class="exp-company">Meattown / Mgilsoft — Newark, NJ (Remote)</div>
+      <p class="exp-description">
+        I am leading the complete modernization of an ecosystem that was born in Visual Basic and now lives entirely in
+        the cloud. It has been a process of transforming manual processes and paperwork into a robust web platform,
+        achieving an <strong>80%</strong> increase in the company's operational efficiency. In addition to the software,
+        I also worked on the hardware: I designed a prototype for truck tracking using ESP32 and GPS, integrating
+        real-time routes with Google Maps. I also ensure that the Linux infrastructure and the Azure databases run
+        smoothly.
+      </p>
+      <div class="exp-stack">
+        <span class="tag">.NET</span><span class="tag">Angular</span><span class="tag">MySQL</span>
+        <span class="tag">Azure</span><span class="tag">C++</span><span class="tag">IoT</span><span
+          class="tag">Linux</span>
+      </div>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <span class="exp-role">Full-Stack Software Engineer</span>
+        <span class="exp-date">Dec 2022 – Oct 2025</span>
+      </div>
+      <div class="exp-company">Independent Consultant — Santiago, DR / New Jersey, USA (Remote)</div>
+      <p class="exp-description">
+        During these years, I focused on creating software solutions with a clear business purpose.
+        I developed and sold <strong>RentCarCloud</strong>, a multi-tenant SaaS platform for vehicle rentals,
+        and built <strong>SalesMinimal</strong>, an accounting system that currently generates passive income for me.
+        I also designed <strong>PicFlow</strong> for managing photography studios and a desktop suite
+        for dental clinics that <strong>reduced the administrative burden by 40%</strong>. In parallel,
+        I executed network infrastructure and CCTV security projects for residential clients,
+        managing both the technical deployment and the direct client relationship.
+      </p>
+      <div class="exp-stack">
+        <span class="tag">.NET</span><span class="tag">Angular</span><span class="tag">C# / WinForms</span>
+        <span class="tag">SQL Server</span><span class="tag">Azure</span>
+      </div>
+    </div>
+
+    <div class="exp-entry">
+      <div class="exp-header">
+        <span class="exp-role">Software Developer Intern</span>
+        <span class="exp-date">Feb 2022 – Jun 2022</span>
+      </div>
+      <div class="exp-company">GensoftCorp — Lyndhurst, NJ (Remote)</div>
+      <p class="exp-description">
+        I was part of the development team for the company's main e-commerce platform,
+        participating in the entire software lifecycle and optimizing critical functionalities
+        to improve user experience and system efficiency.
+      </p>
+      <div class="exp-stack">
+        <span class="tag">.NET</span><span class="tag">Angular</span><span class="tag">SQL Server</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul class="project-list">
+
+      <li>
+        <div>
+          <span class="project-name">Bugboard</span>
+          <span class="project-desc">
+            Intelligent real-time bug classification. Uses a FastAPI backend that connects to local LLMs (via Ollama)
+            to automatically detect duplicates, assign severity, and categorize modules.
+            Because manually reading logs isn't fun.
+          </span>
+        </div>
+        <div class="project-tags">
+          <span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">Ollama</span><span
+            class="tag">LLM</span><span class="tag">PostgreSQL</span><span class="tag">Angular</span>
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <span class="project-name">AcademiPredict</span>
+          <span class="project-desc">
+            AI-powered student prediction system developed for Samsung Innovation Campus. Trained with RandomForest and
+            SVM to identify students at risk and recommend academic areas based on their profile. Includes sentiment
+            analysis in teacher observations using NLP.
+          </span>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">NLP</span><span
+            class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">TF-IDF</span>
+        </div>
+      </li>
+
+      <li>
+        <div>
+          <span class="project-name">FileNation</span>
+          <span class="project-desc">
+            Personal file storage platform with JWT authentication, document preview, and role-based access control.
+            Designed to run on a home NAS using Docker. Why pay for cloud services when you have the hardware in your
+            living room?
+          </span>
+        </div>
+        <div class="project-tags">
+          <span class="tag">.NET</span><span class="tag">React</span><span class="tag">Docker</span><span
+            class="tag">Linux</span>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <section id="youtube">
+    <h2>YouTube</h2>
+    <p>
+      I run a YouTube channel about software architecture, system design, SQL, and the business side of
+      engineering. Currently at <strong>5.4K subscribers</strong> — apparently people enjoy hearing about
+      this stuff from someone who actually ships things.
+    </p>
+    <p>
+      It's a lively community. Some people come for the content, some come to argue in the comments,
+      and some come to argue with the people arguing. Opinions fly, debates get heated, and occasionally
+      someone gets schooled. I think that's healthy — no technical community worth joining has
+      everyone agreeing all the time. The only rule is respect. We're all family here,
+      and no family is perfect.
+    </p>
+    <div class="yt-block">
+      <div class="yt-title">@anndev14</div>
+      <div class="yt-meta">Software architecture · System design · Engineering &amp; business</div>
+      <a href="https://www.youtube.com/@anndev14" target="_blank">Watch on YouTube →</a>
+    </div>
+  </section>
+
+  <section id="writing">
+    <h2>Writing & Documentation</h2>
+    <p>
+      This isn't just any documentation. It's <em>the</em> documentation.
+    </p>
+    <p>
+      Along with a group of friends and colleagues, I'm building a comprehensive technical reference designed to help
+      the community. We're not just focusing on <strong>.NET and Angular</strong>; we're delving into
+      <strong>SQL</strong>,
+      <strong>Python</strong>, and the actual implementation of <strong>AI</strong>. The goal is to cover the
+      fundamentals first—because someone has to write them well—and then scale up to architecture, systems design, and
+      software engineering principles.
+    </p>
+    <p>
+      Most importantly: how to structure real-world projects. Not toy examples, but the decisions you face when
+      something has to work in production. We'll include <em>walkthroughs</em> of systems we've built, showing the
+      reasoning behind each choice, not just the happy ending.
+    </p>
+    <p>
+      The part I'm most excited about: a series of video interviews with developers who have 20 and 30+ years of
+      experience. The central question: <em>How do you program today compared to how you did in the '90s and
+        2000s?</em>
+      There's a generation of engineers who saw the industry completely transform, and they're rarely asked about it.
+      We're going to do that.
+    </p>
+    <p class="writing-note">
+      In progress. It will be available here when it's ready—which, in software, means when it's actually ready.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      The best way to reach me is by email. I don't list my phone number publicly —
+      not because I'm antisocial, but because I've learned that anyone who truly needs to call
+      can figure out how to send an email first.
+    </p>
+    <p class="contact-line"><strong>Email:</strong> <a href="mailto:andersonfrias001@gmail.com"
+        class="mono">andersonfrias001@gmail.com</a></p>
+    <p class="contact-line"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anderson-frias-478214225/"
+        target="_blank" class="mono">anderson-frias</a></p>
+    <p class="contact-line"><strong>GitHub:</strong> <a href="https://github.com/anderj14" target="_blank"
+        class="mono">anderj14</a></p>
+    <p>
+      I'm open to remote opportunities in backend .NET and full-stack engineering.
+      If you're building something interesting, I'm listening.
+    </p>
+    <p>
+      And yes — you might wonder why someone who's sold software and has active projects is
+      looking for a job. Fair question. Sometimes you choose stability: a fixed schedule,
+      a predictable salary, the ability to just live without everything depending on the next sale.
+      Entrepreneurship is great, but so is taking it easy. Life's too short to always be hustling.
+      I want to build good things, get paid fairly, and have time left over to actually enjoy it.
+    </p>
+  </section>
+
+  <footer>
+    <span>Anderson Frias — Santiago, DR</span>
+    <span>HTML · CSS · no frameworks were harmed</span>
+  </footer>
+
+</body>
+
+</html>
